@@ -17,7 +17,7 @@ fn main() -> Result<()> {
     for _ in 0..M {
         request_work(metrice.clone())?;
     }
-    println!("task done");
+
     loop {
         thread::sleep(Duration::from_secs(1));
         println!("{}", metrice);
