@@ -17,11 +17,12 @@ fn main() -> Result<()> {
     for _ in 0..M {
         request_work(metrice.clone())?;
     }
-
+    println!("task done");
     loop {
         thread::sleep(Duration::from_secs(1));
         println!("{}", metrice);
     }
+
     #[allow(unreachable_code)]
     //常见task_work
     Ok(())
@@ -34,6 +35,7 @@ fn task_work(id: usize, metrice: Metrics) -> Result<()> {
             thread::sleep(Duration::from_millis(rng.gen_range(100..5000)));
             metrice.inc(format!("task_{}", id))?;
         }
+
         #[allow(unreachable_code)]
         Ok::<_, anyhow::Error>(())
     });
